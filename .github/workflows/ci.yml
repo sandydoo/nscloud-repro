@@ -10,11 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v23
+        with:
+          extra_nix_config: "sandbox = false"
       - uses: cachix/cachix-action@v12
         with:
           name: devenv
-      - run: |
-          sudo echo "sandbox = false" >> /etc/nix/nix.conf
       - run: nix profile install --accept-flake-config github:cachix/devenv/latest
       - run: devenv ci
 
