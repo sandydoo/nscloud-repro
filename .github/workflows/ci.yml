@@ -14,7 +14,7 @@ jobs:
         with:
           name: devenv
       - run: |
-          echo "sandbox = false" >> /etc/nix/nix.conf
+          sudo echo "sandbox = false" >> /etc/nix/nix.conf
       - run: nix profile install --accept-flake-config github:cachix/devenv/latest
       - run: devenv ci
 
